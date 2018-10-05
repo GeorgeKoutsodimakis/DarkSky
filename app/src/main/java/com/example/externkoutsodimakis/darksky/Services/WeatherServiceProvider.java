@@ -1,10 +1,12 @@
 package com.example.externkoutsodimakis.darksky.Services;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.externkoutsodimakis.darksky.CONSTANTS;
 import com.example.externkoutsodimakis.darksky.Model.Currently;
 import com.example.externkoutsodimakis.darksky.Model.Weather;
+import com.example.externkoutsodimakis.darksky.events.ErrorEvent;
 import com.example.externkoutsodimakis.darksky.events.WeatherEvent;
 
 import org.greenrobot.eventbus.EventBus;
@@ -46,6 +48,7 @@ public class WeatherServiceProvider {
             @Override
             public void onFailure(Call<Weather> call, Throwable t) {
                 Log.d(WEATHER_PROVIDER_TAG, "UNABLE TO GET WEATHER DATA");
+                EventBus.getDefault().post(new ErrorEvent(error));
             }
         });
     }
