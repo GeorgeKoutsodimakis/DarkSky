@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DarkSky</string>
+    <string name="action_settings">Settings</string>
+    <string name="location">Location</string>
+    <string name="celcius">Celcius</string>
+    <string name="fahreneit">Fahreneiht</string>
 </resources>
