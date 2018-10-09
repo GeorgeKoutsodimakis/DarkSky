@@ -1,8 +1,10 @@
 package com.example.externkoutsodimakis.darksky;
 
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.externkoutsodimakis.darksky.Model.Currently;
 import com.example.externkoutsodimakis.darksky.Services.WeatherServiceProvider;
+import com.example.externkoutsodimakis.darksky.Utils.Constants;
 import com.example.externkoutsodimakis.darksky.events.ErrorEvent;
 import com.example.externkoutsodimakis.darksky.events.WeatherEvent;
 
@@ -29,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.temp_tv)
     TextView tempTextView;
 
-    @BindView(R.id.icon_img)
+    @BindView(R.id.weatherIcon)
     ImageView weatherIcon;
 
     @BindView(R.id.summary_tv)
@@ -37,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
+    @BindView(R.id.timeStamp)
+    TextView timeStamp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +56,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
-/*        MenuItem tempSwitch = menu.findItem(R.id.switch_metrics);
-        tempSwitch.setActionView(R.layout.temp_switch);*/
+
         return true;
     }
 
@@ -78,7 +83,9 @@ public class MainActivity extends AppCompatActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onWeatherEvent(WeatherEvent weatherEvent) {
         Currently currentWeather = weatherEvent.getWeather().getCurrently();
-        tempTextView.setText(String.valueOf(Math.round(currentWeather.getTemperature())));
+        Log.d(Constants.MAIN_ACTIVITY_TAG, "TIME" + currentWeather.getTime());
+        timeStamp.setText(String.valueOf(currentWeather.getTime()));
+        tempTextView.setText(String.valueOf(currentWeather.getTemperature()) + "/" + currentWeather.getApparentTemperature());
         summaryTv.setText(currentWeather.getSummary());
         weatherIcon.setImageResource(weatherIconMap.get(currentWeather.getIcon()));
     }

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <RadioGroup
         android:id="@+id/toggle"
@@ -16,7 +15,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/pick_out_line"
-        android:checkedButton="@+id/fahreneiht"
+        android:checkedButton="@+id/offer"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
-            android:id="@+id/celcius"
+            android:id="@+id/search"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="1dp"
@@ -38,7 +37,7 @@
             android:textColor="@color/colorWhite" />
 
         <RadioButton
-            android:id="@+id/fahreneiht"
+            android:id="@+id/offer"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginTop="1dp"
@@ -49,6 +48,6 @@
             android:button="@null"
             android:gravity="center"
             android:text="@string/fahreneit"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@color/colorWhite" />
     </RadioGroup>
 </android.support.constraint.ConstraintLayout>
