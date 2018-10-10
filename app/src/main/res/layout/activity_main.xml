@@ -7,15 +7,10 @@
     android:background="@drawable/background"
     tools:context=".MainActivity">
 
-    <android.support.v7.widget.Toolbar
+    <android.support.v7.widget.ContentFrameLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        app:titleTextColor="@color/colorWhite"
-        android:label="@string/app_name"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
+        android:layout_height="wrap_content" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/infoLayout"

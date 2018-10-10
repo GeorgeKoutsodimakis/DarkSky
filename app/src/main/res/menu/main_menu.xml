@@ -3,13 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- Settings, should always be in the overflow -->
+    <!--<item-->
+    <!--android:id="@+id/switch_metrics"-->
+    <!--android:title=""-->
+    <!--app:actionLayout="@layout/temperature_switch"-->
+    <!--app:showAsAction="always" />-->
+    <!--    <item
+            android:id="@+id/shareLocation"
+            android:title=""
+            android:icon="@drawable/ic_share"
+            app:showAsAction="always"/>
+
+
+        <item
+            android:id="@+id/searchLocation"
+            android:title=""
+            android:icon="@drawable/ic_search"
+            app:showAsAction="always"/>
+
+        <item
+            android:id="@+id/Settings"
+            android:title="Settings"
+            android:icon="@drawable/ic_search"
+            app:showAsAction="never"/>-->
+
     <item
-        android:id="@+id/switch_metrics"
-        android:title=""
-        app:actionLayout="@layout/temperature_switch"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/location"
-        android:title="@string/location"
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search"
+        android:orderInCategory="200"
+        android:title="@string/search"
+        app:showAsAction="ifRoom"></item>
+
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/ic_share"
+        android:orderInCategory="300"
+        android:title="@string/share"
+        app:showAsAction="ifRoom"></item>
+
+
 </menu>
