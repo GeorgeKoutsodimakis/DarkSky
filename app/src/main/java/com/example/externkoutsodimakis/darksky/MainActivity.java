@@ -1,19 +1,18 @@
 package com.example.externkoutsodimakis.darksky;
 
-import android.app.FragmentTransaction;
-import android.support.constraint.ConstraintLayout;
+import android.support.annotation.NonNull;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.text.Layout;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TabWidget;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,10 +28,6 @@ import com.example.externkoutsodimakis.darksky.events.WeatherEvent;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import org.w3c.dom.Text;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 import static com.example.externkoutsodimakis.darksky.Utils.IconUtil.weatherIconMap;
 
@@ -42,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView weatherIcon;
     TextView summaryTv;
     TextView timeStamp;
+    ViewPager viewPager;
+    TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,16 +50,37 @@ public class MainActivity extends AppCompatActivity {
         weatherIcon = findViewById(R.id.weatherIcon);
         summaryTv = findViewById(R.id.summary_tv);
         timeStamp = findViewById(R.id.timeStamp);
+        tabLayout = findViewById(R.id.tab_layout);
+        viewPager = findViewById(R.id.pager);
 
-        AppbarFragment appbarFragment = new AppbarFragment();
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.current));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.hourly));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.daily));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.map));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();;
-        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.toolbar, appbarFragment, appbarFragment.toString());
-        fragmentTransaction.addToBackStack(appbarFragment.toString());
-        fragmentTransaction.commit();
+        PagerAdapter pagerAdapter = new com.example.externkoutsodimakis.darksky.Adapter.PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
 
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+        loadAppBar();
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -75,15 +93,10 @@ public class MainActivity extends AppCompatActivity {
 
         switch (menuItem) {
             case R.id.action_search:
-                SearchFragment searchFragment = new SearchFragment();
-                FragmentManager fragmentManager = getSupportFragmentManager();;
-                android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.toolbar, searchFragment, searchFragment.toString());
-                fragmentTransaction.addToBackStack(searchFragment.toString());
-                fragmentTransaction.commit();
+                loadSearchBar();
                 break;
             case R.id.action_share:
-                Toast.makeText(this,"share",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "share", Toast.LENGTH_SHORT).show();
                 break;
         }
 
@@ -122,5 +135,23 @@ public class MainActivity extends AppCompatActivity {
     public void onErrorEvent(ErrorEvent errorEvent) {
         Toast.makeText(this, errorEvent.getErrorMsg(), Toast.LENGTH_SHORT).show();
 
+    }
+
+    private void loadAppBar() {
+        AppbarFragment appbarFragment = new AppbarFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.toolbar, appbarFragment, appbarFragment.toString());
+        fragmentTransaction.addToBackStack(appbarFragment.toString());
+        fragmentTransaction.commit();
+    }
+
+    private void loadSearchBar() {
+        SearchFragment searchFragment = new SearchFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.toolbar, searchFragment, searchFragment.toString());
+        fragmentTransaction.addToBackStack(searchFragment.toString());
+        fragmentTransaction.commit();
     }
 }
