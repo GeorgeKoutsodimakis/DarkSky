@@ -2,12 +2,12 @@ package com.example.externkoutsodimakis.darksky.Services;
 
 import android.util.Log;
 
-import com.example.externkoutsodimakis.darksky.Model.Hourly;
-import com.example.externkoutsodimakis.darksky.Utils.COMMON;
-import com.example.externkoutsodimakis.darksky.Model.Currently;
-import com.example.externkoutsodimakis.darksky.Model.Weather;
 import com.example.externkoutsodimakis.darksky.Events.ErrorEvent;
 import com.example.externkoutsodimakis.darksky.Events.WeatherEvent;
+import com.example.externkoutsodimakis.darksky.Model.Currently;
+import com.example.externkoutsodimakis.darksky.Model.Hourly;
+import com.example.externkoutsodimakis.darksky.Model.Weather;
+import com.example.externkoutsodimakis.darksky.Utils.COMMON;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.example.externkoutsodimakis.darksky.Utils.COMMON.WEATHER_PROVIDER_TAG;
 
-public class WeatherServiceProvider {
+public class HourlyServiceProvider {
     private Retrofit retrofit;
 
     private Retrofit getRetrofit() {
@@ -41,10 +41,8 @@ public class WeatherServiceProvider {
             public void onResponse(Call<Weather> call, Response<Weather> response) {
                 Weather weather = response.body();
                 if (response != null) {
-                    Currently currently = weather.getCurrently();
                     Hourly hourly = weather.getHourly();
-                    //Log.d(WEATHER_PROVIDER_TAG, "HOURLY"+ hourly.getData().get(0).getSummary());
-                    Log.d(WEATHER_PROVIDER_TAG, "TEMPERATURE" + currently.getTemperature());
+                    Log.d(WEATHER_PROVIDER_TAG, "HOURLY"+ hourly.getData().get(0).getSummary());
                     EventBus.getDefault().post(new WeatherEvent(weather));
                 }else {
                     EventBus.getDefault().post(new ErrorEvent(COMMON.ERROR_EVENT));
@@ -59,3 +57,4 @@ public class WeatherServiceProvider {
         });
     }
 }
+

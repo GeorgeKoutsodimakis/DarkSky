@@ -1,4 +1,4 @@
-package com.example.externkoutsodimakis.darksky.events;
+package com.example.externkoutsodimakis.darksky.Events;
 
 import com.example.externkoutsodimakis.darksky.Model.Weather;
 

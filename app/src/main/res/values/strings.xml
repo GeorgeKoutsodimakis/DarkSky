@@ -6,9 +6,10 @@
     <string name="fahreneit">Fahreneiht</string>
     <string name="search">Search...</string>
     <string name="share">Share</string>
-    <string name="current">Now</string>
+    <string name="now">Now</string>
     <string name="hourly">Hourly</string>
     <string name="daily">Daily</string>
     <string name="map">Map</string>
+    <string name="current">CURRENT</string>
 
 </resources>

@@ -1,6 +1,4 @@
-package com.example.externkoutsodimakis.darksky.events;
-
-import com.example.externkoutsodimakis.darksky.Model.Weather;
+package com.example.externkoutsodimakis.darksky.Events;
 
 public class ErrorEvent {
 

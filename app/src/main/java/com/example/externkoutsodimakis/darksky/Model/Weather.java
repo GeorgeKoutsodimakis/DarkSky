@@ -18,6 +18,9 @@ public class Weather {
     @SerializedName("currently")
     @Expose
     private Currently currently;
+    @SerializedName("hourly")
+    @Expose
+    private Hourly hourly;
 
     private Integer offset;
 
@@ -47,6 +50,10 @@ public class Weather {
 
     public Currently getCurrently() {
         return currently;
+    }
+
+    public Hourly getHourly() {
+        return hourly;
     }
 
     public void setCurrently(Currently currently) {

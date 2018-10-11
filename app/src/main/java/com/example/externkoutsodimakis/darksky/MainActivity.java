@@ -1,35 +1,17 @@
 package com.example.externkoutsodimakis.darksky;
 
-import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TabWidget;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.externkoutsodimakis.darksky.Model.Currently;
-import com.example.externkoutsodimakis.darksky.Services.WeatherServiceProvider;
-import com.example.externkoutsodimakis.darksky.Utils.Constants;
-import com.example.externkoutsodimakis.darksky.Utils.TempConversion;
 import com.example.externkoutsodimakis.darksky.View.AppbarFragment;
 import com.example.externkoutsodimakis.darksky.View.SearchFragment;
-import com.example.externkoutsodimakis.darksky.events.ErrorEvent;
-import com.example.externkoutsodimakis.darksky.events.WeatherEvent;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
-import static com.example.externkoutsodimakis.darksky.Utils.IconUtil.weatherIconMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.pager);
 
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.current));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.now));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.hourly));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.daily));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.map));
