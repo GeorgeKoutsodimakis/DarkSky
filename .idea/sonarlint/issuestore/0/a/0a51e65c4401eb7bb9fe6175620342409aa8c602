@@ -1,3 +1,9 @@
 
-_squid:UselessImportCheck"6Remove this unused import 'android.view.MenuInflater'.(¥ñ´Ò8‚£·Çå,
-jsquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(²Ú±Ž8‚£·Çå,
+lsquid:CallToDeprecatedMethod"@Remove this use of "setOnTabSelectedListener"; it is deprecated.(°ü€:8ËËüóå,
+¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(½Ä³ïþÿÿÿÿ8ËËüóå,
+gsquid:UselessImportCheck"?Remove this unused import 'android.support.annotation.NonNull'.(¼Åß8¬µöóå,
+lsquid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(³ÚÕÑÿÿÿÿÿ8¬µöóå,
+jsquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(²Ú±Ž8¬µöóå,
+]squid:UselessImportCheck"5Remove this unused import 'android.widget.TabWidget'.(À´ªz8¬µöóå,
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ž¦›Í8ËËüóå,
+\squid:UselessImportCheck".Remove this unused import 'android.view.View'.(Ø½­äþÿÿÿÿ8¬µöóå,

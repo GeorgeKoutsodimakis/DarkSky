@@ -1,0 +1,7 @@
+
+Gsquid:S1172"&Remove these unused method parameters.(Υ›ϊωÿÿÿÿ8ΝΕήσε,
+Fsquid:S00108")Either remove or fill this block of code.(Γέϊέ8ΝΕήσε,
+Dsquid:S1185"(Remove this method to simply inherit it.(Ο€¶8ΝΕήσε,
+Isquid:S1185"(Remove this method to simply inherit it.(Η™²“ψÿÿÿÿ8ΝΕήσε,
+|squid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ηκκ“ÿÿÿÿÿ8ΝΕήσε,
+Zsquid:UselessImportCheck",Remove this unused import 'android.net.Uri'.(ςκϋ‘ύÿÿÿÿ8ΝΕήσε,

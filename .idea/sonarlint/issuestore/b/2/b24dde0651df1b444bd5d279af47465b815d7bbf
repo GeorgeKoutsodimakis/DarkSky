@@ -1,0 +1,4 @@
+
+[squid:S1118":Add a private constructor to hide the implicit public one.(æ¥„³üÿÿÿÿ8”ƒèðå,
+9squid:S2386"Make this member "protected".(¹Ÿäú8”ƒèðå,
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÜÊ¤¯8”ƒèðå,

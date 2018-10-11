@@ -33,10 +33,7 @@ import static com.example.externkoutsodimakis.darksky.Utils.IconUtil.weatherIcon
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView tempTextView;
-    ImageView weatherIcon;
-    TextView summaryTv;
-    TextView timeStamp;
+
     ViewPager viewPager;
     TabLayout tabLayout;
 
@@ -44,12 +41,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        requestCurrentWeather(41.0522, 23.2227);
 
-        tempTextView = findViewById(R.id.temp_tv);
-        weatherIcon = findViewById(R.id.weatherIcon);
-        summaryTv = findViewById(R.id.summary_tv);
-        timeStamp = findViewById(R.id.timeStamp);
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.pager);
 
@@ -103,39 +95,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void requestCurrentWeather(double lat, double log) {
-        WeatherServiceProvider weatherServiceProvider = new WeatherServiceProvider();
-        weatherServiceProvider.getWeather(lat, log);
-    }
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        EventBus.getDefault().unregister(this);
-    }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onWeatherEvent(WeatherEvent weatherEvent) {
-        Currently currentWeather = weatherEvent.getWeather().getCurrently();
-        Log.d(Constants.MAIN_ACTIVITY_TAG, "TIME" + currentWeather.getTime());
-        timeStamp.setText(String.valueOf(currentWeather.getTime()));
-        tempTextView.setText(String.valueOf(Math.round(TempConversion.tempConversion(currentWeather.getTemperature()))) + "/" + Math.round(TempConversion.tempConversion(currentWeather.getApparentTemperature())));
-        summaryTv.setText(currentWeather.getSummary());
-        weatherIcon.setImageResource(weatherIconMap.get(currentWeather.getIcon()));
-    }
-
-    @Subscribe
-    public void onErrorEvent(ErrorEvent errorEvent) {
-        Toast.makeText(this, errorEvent.getErrorMsg(), Toast.LENGTH_SHORT).show();
-
-    }
 
     private void loadAppBar() {
         AppbarFragment appbarFragment = new AppbarFragment();

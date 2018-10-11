@@ -16,12 +16,6 @@ public class DailyFragment extends Fragment {
         // Required empty public constructor
     }
 
-
-    public static DailyFragment newInstance(String param1, String param2) {
-        DailyFragment fragment = new DailyFragment();
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,19 +26,11 @@ public class DailyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_daily, container, false);
+        View view = inflater.inflate(R.layout.fragment_daily, container, false);
+
+        return view;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
 
 
 }
